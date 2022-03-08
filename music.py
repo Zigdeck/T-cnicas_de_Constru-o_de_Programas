@@ -1,3 +1,6 @@
+import random
+
+
 class Music:
 
     def __init__(self, instrumento, volume_inicial, volume_atual, bpm, oitava):
@@ -14,8 +17,24 @@ class Music:
             self.bpm_changed(caractere)
         elif caractere == "T+" or caractere == "T-":
             self.oitava_changed(caractere)
-        elif caractere == "A" or "B" or "C" or "D" or "E" or "F" or "G":
+        elif caractere == "A" or "B" or "C" or "D" or "E" or "F" or "G" or " ":
             self.nota_changed(caractere)
+        elif caractere == "?" or caractere == ".":
+            aux = random.randint(0, 7)
+            if aux == 0:
+                self.nota_changed("A")
+            elif aux == 1:
+                self.nota_changed("B")
+            elif aux == 2:
+                self.nota_changed("C")
+            elif aux == 3:
+                self.nota_changed("D")
+            elif aux == 4:
+                self.nota_changed("E")
+            elif aux == 5:
+                self.nota_changed("F")
+            elif aux == 6:
+                self.nota_changed("G")
 
     def nota_changed(self, termo):
         if termo.upper() == "A":
@@ -37,8 +56,11 @@ class Music:
             print("Fá")
             # return "Fá"
         elif termo.upper() == "G":
+            print("Sol")
+            # return "Sol"
+        elif termo == " ":
             print("Pausa")
-            # return " "
+            # return "Pausa"
 
     def volume_changed(self, termo):
         if termo == "+":
