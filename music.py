@@ -7,21 +7,38 @@ class Music:
         self.bpm = bpm
         self.oitava = oitava
 
+    def tratamento_caractere(self, caractere):
+        if caractere == "+" or caractere == "-":
+            self.volume_changed(caractere)
+        elif caractere == "BPM+" or caractere == "BPM-":
+            self.bpm_changed(caractere)
+        elif caractere == "T+" or caractere == "T-":
+            self.oitava_changed(caractere)
+        elif caractere == "A" or "B" or "C" or "D" or "E" or "F" or "G":
+            self.nota_changed(caractere)
+
     def nota_changed(self, termo):
         if termo.upper() == "A":
-            return "Lá"
+            print("Lá")
+            # return "Lá"
         elif termo.upper() == "B":
-            return "Si"
+            print("Si")
+            # return "Si"
         elif termo.upper() == "C":
-            return "Dó"
+            print("Dó")
+            # return "Dó"
         elif termo.upper() == "D":
-            return "Ré"
+            print("Ré")
+            # return "Ré"
         elif termo.upper() == "E":
-            return "Dó"
+            print("Dó")
+            # return "Dó"
         elif termo.upper() == "F":
-            return "Fá"
+            print("Fá")
+            # return "Fá"
         elif termo.upper() == "G":
-            return " "
+            print("Pausa")
+            # return " "
 
     def volume_changed(self, termo):
         if termo == "+":
