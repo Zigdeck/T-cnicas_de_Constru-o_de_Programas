@@ -7,6 +7,22 @@ class Music:
         self.bpm = bpm
         self.oitava = oitava
 
+    def nota_changed(self, termo):
+        if termo.upper() == "A":
+            return "Lá"
+        elif termo.upper() == "B":
+            return "Si"
+        elif termo.upper() == "C":
+            return "Dó"
+        elif termo.upper() == "D":
+            return "Ré"
+        elif termo.upper() == "E":
+            return "Dó"
+        elif termo.upper() == "F":
+            return "Fá"
+        elif termo.upper() == "G":
+            return " "
+
     def volume_changed(self, termo):
         if termo == "+":
             self.volume_atual *= 2
@@ -33,4 +49,3 @@ class Music:
         elif termo == "T-":
             self.oitava -= 1
         print(f"oitava mudou para: {self.oitava}")
-        
