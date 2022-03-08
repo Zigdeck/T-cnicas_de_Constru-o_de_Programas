@@ -1,4 +1,4 @@
-from musicProperties import Music
+from music import Music
 
 texto = "ElaBPM-BPM-borar uma lista-+++ (informal, em porT+tuguês) dos req--++uisitos que o sisBPM+tema deveBPM+ possuir no pT-onto de vista dos autor"
 instrumento = "Violao"
