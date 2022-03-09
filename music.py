@@ -3,12 +3,13 @@ import random
 
 class Music:
 
-    def __init__(self, instrumento, volume_inicial, volume_atual, bpm, oitava):
+    def __init__(self, instrumento, volume_inicial, volume_atual, bpm, oitava, nota_anterior):
         self.instrumento = instrumento
         self.volume_inicial = volume_inicial
         self.volume_atual = volume_atual
         self.bpm = bpm
         self.oitava = oitava
+        self.nota_anterior = nota_anterior
 
     def tratamento_caractere(self, caractere):
         if caractere == "+" or caractere == "-":
@@ -35,6 +36,10 @@ class Music:
                 self.nota_changed("F")
             elif aux == 6:
                 self.nota_changed("G")
+        elif caractere == "\n" :
+            self.instrumento_changed() 
+        elif caractere == "I" or "O" or "U" :
+            self.testa_anterior(caractere)
 
     def nota_changed(self, termo):
         if termo.upper() == "A":
@@ -59,6 +64,14 @@ class Music:
             print("Sol")
             # return "Sol"
         elif termo == " ":
+            print("Pausa")
+            # return "Pausa"
+            
+    def testa_anterior(self, termo):
+        if self.nota_anterior == "A" or "B" or "C" or "D" or "E" or "F" or "G":
+            self.nota_changed(self.nota_anterior) 
+            self.nota_anterior = termo
+        else:
             print("Pausa")
             # return "Pausa"
 
@@ -88,3 +101,9 @@ class Music:
         elif termo == "T-":
             self.oitava -= 1
         print(f"oitava mudou para: {self.oitava}")
+        
+    def instrumento_changed(self, array):
+        for x in array:
+          if x == self.instrumento:
+             self.instrumento = array[x+1]
+             break
