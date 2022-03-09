@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>829</width>
+    <height>710</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(134, 233, 191);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>96</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QFrame" name="frame_6">
+         <property name="maximumSize">
+          <size>
+           <width>620</width>
+           <height>72</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QFrame{
+	background-color: rgb(50, 208, 132);
+	border-radius: 15px;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="styleSheet">
+             <string notr="true">font: 63 22pt &quot;Yu Gothic UI Semibold&quot;;</string>
+            </property>
+            <property name="text">
+             <string>Music Text Composition Generator</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_2">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QTextEdit" name="textEdit">
+         <property name="styleSheet">
+          <string notr="true">QTextEdit{
+	background-color: rgb(255, 255, 255);
+	border-radius: 15px;
+	padding-left: 10px;
+}
+</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_4">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QFrame" name="frame_7">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="maximumSize">
+          <size>
+           <width>65</width>
+           <height>65</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	font: 48pt &quot;MS Shell Dlg 2&quot;;
+	border-radius: 15px;
+	background-color: rgb(255, 255, 255);
+	padding-bottom: 8px;
+}
+
+QPushButton:hover{
+	font: 48pt &quot;MS Shell Dlg 2&quot;;
+	border-radius: 15px;
+	padding-bottom: 8px;
+	background-color: rgb(218, 218, 218);
+}
+
+QPushButton:pressed{
+	font: 48pt &quot;MS Shell Dlg 2&quot;;
+	border-radius: 15px;
+	background-color: rgb(158, 158, 158);
+	padding-bottom: 8px;
+}</string>
+         </property>
+         <property name="text">
+          <string>▶</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="maximumSize">
+          <size>
+           <width>65</width>
+           <height>65</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	font: 48pt &quot;MS Shell Dlg 2&quot;;
+	border-radius: 15px;
+	background-color: rgb(255, 255, 255);
+	padding-bottom: 8px;
+}
+
+QPushButton:hover{
+	font: 48pt &quot;MS Shell Dlg 2&quot;;
+	border-radius: 15px;
+	padding-bottom: 8px;
+	background-color: rgb(218, 218, 218);
+}
+
+QPushButton:pressed{
+	font: 48pt &quot;MS Shell Dlg 2&quot;;
+	border-radius: 15px;
+	background-color: rgb(158, 158, 158);
+	padding-bottom: 8px;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>⏸</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_8">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_5">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>71</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>47</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	font: 63 16pt &quot;Yu Gothic UI Semibold&quot;;
+	border-radius: 23px;
+	background-color: rgb(50, 208, 132);
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+QPushButton:hover{
+	font: 63 16pt &quot;Yu Gothic UI Semibold&quot;;
+	border-radius: 23px;
+	background-color: rgb(39, 163, 103);
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+QPushButton:pressed{
+	font: 63 16pt &quot;Yu Gothic UI Semibold&quot;;
+	border-radius: 23px;
+	background-color: rgb(22, 94, 59);
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Save File</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>829</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
