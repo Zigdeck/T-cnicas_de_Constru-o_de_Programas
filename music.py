@@ -107,3 +107,4 @@ class Music:
           if x == self.instrumento:
              self.instrumento = array[x+1]
              break
+        print(f"instrumento mudou para: {self.instrumento}")
