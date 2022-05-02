@@ -6,8 +6,9 @@ class TextConverter:
         self.texto = texto
 
     def tratar_e_devolver(self):
-        self.texto_to_upper()
+        # self.texto_to_upper()
         self.converte_notas()
+        print(self.texto)
         return self.texto
 
     # Tranforma todos as letras minúsculas em maiúsculas
@@ -21,55 +22,117 @@ class TextConverter:
         self.texto = texto_aux
 
     def converte_notas(self):
+        consoantes_minusc = ["h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
+        consoantes_maiusc = ["H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"]
+
         texto_aux = ""
         i = 0
         nota_anterior = ""
         while i < len(self.texto):
+
             # Caso contenha "BPM+" ou "BPM-", mantém isso no texto
-            if self.texto[i:i+3] == "BPM":
-                texto_aux += self.texto[i:i+4]
-                i += 4
+            #            if self.texto[i:i+3] == "BPM":
+            #                texto_aux += self.texto[i:i+4]
+            #                i += 4
+
             # Caso o caractere esteja no intervalo de A a G, chama o método para procurar a nota correspondente
-            elif "A" <= self.texto[i] <= "G":
+            if "A" <= self.texto[i] <= "G":
                 nota_atual = self.classificar_caractere_de_nota(self.texto[i])
                 texto_aux += nota_atual
                 nota_anterior = nota_atual
                 i += 1
-            # Caso seja as outras vogais...
-            elif self.texto[i] == "O" or self.texto[i] == "I" or self.texto[i] == "U":
-                # Se antes era A ou G, repete a última nota
-                if nota_anterior == "A" or "G":
+
+            # Caso o caractere esteja no intervalo de "a" a "g", usa a nota anterior ou pausa
+            elif "a" <= self.texto[i] <= "g":
+                if "A" <= nota_anterior <= "G":
                     texto_aux += nota_anterior
-                # Caso contrário, pausa
                 else:
-                    texto_aux += " "
+                    texto_aux += "#"
                 i += 1
-            # Caso ? ou ., chama método de gerar letra randomica e logo em seguida chama
-            # método de procurar a nota correspondente
+
+            # Caso o caractere seja uma consoante, usa a nota anterior ou pausa
+            elif self.texto[i] in consoantes_minusc:
+                if "A" <= nota_anterior <= "G":
+                    texto_aux += nota_anterior
+                else:
+                    texto_aux += "#"
+                i += 1
+            elif self.texto[i] in consoantes_maiusc:
+                if "A" <= nota_anterior <= "G":
+                    texto_aux += nota_anterior
+                else:
+                    texto_aux += "#"
+                i += 1
+
+            # Caso seja as outras vogais...
+            #            elif self.texto[i] == "O" or self.texto[i] == "I" or self.texto[i] == "U":
+            # Se antes era A ou G, repete a última nota
+            #                if nota_anterior == "A" or "G":
+            #                    texto_aux += nota_anterior
+            # Caso contrário, pausa
+            #                else:
+            #                    texto_aux += " "
+            #                i += 1
+
+            # Aumenta oitava
             elif self.texto[i] == "?" or self.texto[i] == ".":
-                letra_rand = self.gerar_nota_randomica()
-                nota_atual1 = self.classificar_caractere_de_nota(letra_rand)
-                texto_aux += nota_atual1
+                texto_aux += self.texto[i]
                 i += 1
+
             # Caso T+ ou T-, grava no texto e pula para o próximo caractere
-            elif self.texto[i:i+2] == "T+" or self.texto[i:i+2] == "T-":
-                texto_aux += self.texto[i:i+2]
-                i += 2
-            # Caso '\n", grava no texto e pula 2 caracteres
+            #            elif self.texto[i:i+2] == "T+" or self.texto[i:i+2] == "T-":
+            #                texto_aux += self.texto[i:i+2]
+            #                i += 2
+
+            # Trocar instrumento para o instrumento General MIDI cujo numero é
+            # igual ao valor do instrumento ATUAL + valor do dígito
+            elif "0" <= self.texto[i] <= "9":
+                texto_aux += self.texto[i]
+                i += 1
+
+            # Trocar instrumento para o instrumento General MIDI 7 (Harpsichord)
+            elif self.texto[i] in ["o", "O", "i", "I", "u", "U"]:
+                texto_aux += self.texto[i]
+                i += 1
+
+            # Trocar instrumento para o instrumento General MIDI 114 (Agogo)
+            elif self.texto[i] == "!":
+                texto_aux += "!"
+                i += 1
+
+            # Trocar instrumento para o instrumento General MIDI #15 (Tubular Bells)
             elif self.texto[i] == "\n":
                 texto_aux += "\n"
                 i += 2
+
+            # Trocar instrumento para o instrumento General MIDI #76 (Pan Flute)
+            elif self.texto[i] == ";":
+                texto_aux += ";"
+                i += 1
+
+            # Trocar instrumento para o instrumento General MIDI #20 (Church Organ)
+            elif self.texto[i] == ",":
+                texto_aux += ","
+                i += 1
+
             elif self.texto[i] == " ":
                 texto_aux += " "
                 i += 1
-            # Caso contrário, ignora o caractere
+
+            # Caso contrário, nota anterior ou silencio
             else:
+                if "A" <= nota_anterior <= "G":
+                    texto_aux += nota_anterior
+                else:
+                    texto_aux += "#"
                 i += 1
+
         self.texto = texto_aux
 
     # Quando tivermos a biblioteca musical temos que trocar o retorno de cada letra
     # de acordo com a biblioteca
-    def classificar_caractere_de_nota(self, carac):
+    @staticmethod
+    def classificar_caractere_de_nota(carac):
         retorno = ""
         if carac == "A":
             retorno = "L"  # L simboliza Lá
@@ -87,7 +150,8 @@ class TextConverter:
             retorno = "s"  # s simboliza Sol
         return retorno
 
-    def gerar_nota_randomica(self):
+    @staticmethod
+    def gerar_nota_randomica():
         num = random.randint(0, 7)
         retorno = ""
         if num == 0:
