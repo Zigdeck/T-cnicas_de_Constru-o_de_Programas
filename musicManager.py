@@ -46,7 +46,8 @@ class MusicManager:
                 i += 1
             """
 
-    def tocar_nota(self, nota):
+    @staticmethod
+    def tocar_nota(nota):
         if nota == "L":
             print("Lá")         # Aqui tocaria a nota com a biblioteca
         elif nota == "S":
