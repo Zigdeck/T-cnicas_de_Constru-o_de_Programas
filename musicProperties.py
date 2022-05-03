@@ -57,13 +57,13 @@ class MusicProperties:
             self.instrumento = "Instrumento atual + " + num
         else:
             if num == 0:
-                self.instrumento = "Agogo #114"
+                self.instrumento = "Agogo #114"         # !
             elif num == 1:
-                self.instrumento = "Harpsichord #7"
+                self.instrumento = "Harpsichord #7"     # "o", "O", "i", "I", "u", "U"
             elif num == 2:
-                self.instrumento = "Tubular Bells #15"
+                self.instrumento = "Tubular Bells #15"  # \n
             elif num == 3:
-                self.instrumento = "Pan Flute #76"
+                self.instrumento = "Pan Flute #76"      # ;
             elif num == 4:
-                self.instrumento = "Church Organ #20"
+                self.instrumento = "Church Organ #20"   # ,
         print(f"Intrumento mudou para: {self.instrumento}")
