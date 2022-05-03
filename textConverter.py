@@ -8,7 +8,6 @@ class TextConverter:
     def tratar_e_devolver(self):
         # self.texto_to_upper()
         self.converte_notas()
-        print(self.texto)
         return self.texto
 
     # Tranforma todos as letras minúsculas em maiúsculas
@@ -44,24 +43,31 @@ class TextConverter:
 
             # Caso o caractere esteja no intervalo de "a" a "g", usa a nota anterior ou pausa
             elif "a" <= self.texto[i] <= "g":
-                if "A" <= nota_anterior <= "G":
+                # print(nota_anterior)
+                if nota_anterior in ["L", "S", "D", "R", "M", "F", "s"]:
                     texto_aux += nota_anterior
+                    nota_anterior = self.texto[i]
                 else:
                     texto_aux += "#"
+                    nota_anterior = self.texto[i]
                 i += 1
 
             # Caso o caractere seja uma consoante, usa a nota anterior ou pausa
             elif self.texto[i] in consoantes_minusc:
-                if "A" <= nota_anterior <= "G":
+                if nota_anterior in ["L", "S", "D", "R", "M", "F", "s"]:
                     texto_aux += nota_anterior
+                    nota_anterior = self.texto[i]
                 else:
                     texto_aux += "#"
+                    nota_anterior = self.texto[i]
                 i += 1
             elif self.texto[i] in consoantes_maiusc:
-                if "A" <= nota_anterior <= "G":
+                if nota_anterior in ["L", "S", "D", "R", "M", "F", "s"]:
                     texto_aux += nota_anterior
+                    nota_anterior = self.texto[i]
                 else:
                     texto_aux += "#"
+                    nota_anterior = self.texto[i]
                 i += 1
 
             # Caso seja as outras vogais...
@@ -77,6 +83,7 @@ class TextConverter:
             # Aumenta oitava
             elif self.texto[i] == "?" or self.texto[i] == ".":
                 texto_aux += self.texto[i]
+                nota_anterior = self.texto[i]
                 i += 1
 
             # Caso T+ ou T-, grava no texto e pula para o próximo caractere
@@ -88,43 +95,52 @@ class TextConverter:
             # igual ao valor do instrumento ATUAL + valor do dígito
             elif "0" <= self.texto[i] <= "9":
                 texto_aux += self.texto[i]
+                nota_anterior = self.texto[i]
                 i += 1
 
             # Trocar instrumento para o instrumento General MIDI 7 (Harpsichord)
             elif self.texto[i] in ["o", "O", "i", "I", "u", "U"]:
                 texto_aux += self.texto[i]
+                nota_anterior = self.texto[i]
                 i += 1
 
             # Trocar instrumento para o instrumento General MIDI 114 (Agogo)
             elif self.texto[i] == "!":
                 texto_aux += "!"
+                nota_anterior = self.texto[i]
                 i += 1
 
             # Trocar instrumento para o instrumento General MIDI #15 (Tubular Bells)
             elif self.texto[i] == "\n":
                 texto_aux += "\n"
-                i += 2
+                nota_anterior = self.texto[i]
+                i += 1
 
             # Trocar instrumento para o instrumento General MIDI #76 (Pan Flute)
             elif self.texto[i] == ";":
                 texto_aux += ";"
+                nota_anterior = self.texto[i]
                 i += 1
 
             # Trocar instrumento para o instrumento General MIDI #20 (Church Organ)
             elif self.texto[i] == ",":
                 texto_aux += ","
+                nota_anterior = self.texto[i]
                 i += 1
 
             elif self.texto[i] == " ":
                 texto_aux += " "
+                nota_anterior = self.texto[i]
                 i += 1
 
             # Caso contrário, nota anterior ou silencio
             else:
-                if "A" <= nota_anterior <= "G":
+                if nota_anterior in ["L", "S", "D", "R", "M", "F", "s"]:
                     texto_aux += nota_anterior
+                    nota_anterior = self.texto[i]
                 else:
                     texto_aux += "#"
+                    nota_anterior = self.texto[i]
                 i += 1
 
         self.texto = texto_aux
