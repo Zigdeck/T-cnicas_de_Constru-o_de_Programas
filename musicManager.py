@@ -18,15 +18,12 @@ class MusicManager:
             if self.texto[i] in ["L", "S", "D", "R", "M", "F", "s", "#"]:
                 self.tocar_nota(self.texto[i])
                 i += 1
-            elif (self.texto[i] in ["?", ".", " ", "!", ";", ",", "o", "O", "i", "I", "u", "U"]) or ("0" <= self.texto[i] <= "9"):
+            elif (self.texto[i] in ["\n", "?", ".", " ", "!", ";", ",", "o", "O", "i", "I", "u", "U"]) or ("0" <= self.texto[i] <= "9"):
                 self.musica.selecao_de_procedimento(self.texto[i])
                 i += 1
             elif self.texto[i] == "?" or "." or " ":
                 self.musica.selecao_de_procedimento(self.texto[i])
                 i += 1
-            elif self.texto[i:i+1] == "\n":
-                self.musica.selecao_de_procedimento("\n")
-                i += 2
 
             """
             elif self.texto[i:i+3] == "BPM":
